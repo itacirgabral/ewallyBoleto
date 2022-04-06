@@ -31,5 +31,5 @@ test('# dac10', t => {
   const sequencia = '01230067896'
   t.equal(dac10(sequencia), 3, `O código verificador de ${sequencia} deve ser 3`)
 
-t.end()
+  t.end()
 })
