@@ -20,18 +20,25 @@ const barCodeVal = barCode => {
 const isTitulo = el => el.titulo
 const isPagamento = el => el.pagamento
 
-// const tituloAtts = [
-//   'barCode',
-//   'dac10',
-//   'amount',
-//   'expirationDate',
-//   'titulo'
-// ]
+const bolAtts = [
+  'barCode',
+  'dac10',
+  'amount',
+  'expirationDate'
+]
+
+const bolivator = (boleto, cb) => {
+  const bolkeys = Object.keys(boleto)
+  const attAttOk = bolkeys.length === bolAtts.length + 1 && bolkeys.every(el => bolAtts.includes(el))
+
+  // cb(new Error('nem nem'))
+}
 
 module.exports = {
   amountVal,
   expiraVal,
   barCodeVal,
   isTitulo,
-  isPagamento
+  isPagamento,
+  bolivator
 }
