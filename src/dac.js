@@ -7,7 +7,7 @@ const somatisse = sequencia => sequencia
 
     return String(fator * Number(el))
       .split('')
-      .reduce((a, b) =>  a + Number(b), acc)
+      .reduce((a, b) => a + Number(b), acc)
   }, 0)
 
 const dac10 = sequencia => 10 - somatisse(sequencia) % 10
