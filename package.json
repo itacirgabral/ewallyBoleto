@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx node-dev src/app.js",
-    "start": "node src/app.js"
+    "start": "node src/app.js",
+    "gendac": "node src/gendac.js"
   },
   "repository": {
     "type": "git",
