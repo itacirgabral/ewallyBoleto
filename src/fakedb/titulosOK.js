@@ -1,18 +1,18 @@
 const titulosOK = [{
-  barCode: '01230067896',
-  dac10: 37,
+  barCode: '42282556374',
+  dac10: 1,
   amount: '20.00',
   expirationDate: '2024-07-16',
   titulo: true
 }, {
-  barCode: '01230067896',
-  dac10: 37,
+  barCode: '4889349773728',
+  dac10: 10,
   amount: '20.00',
   expirationDate: '2024-07-16',
   titulo: true
 }, {
-  barCode: '01230067896',
-  dac10: 37,
+  barCode: '47157330195',
+  dac10: 2,
   amount: '20.00',
   expirationDate: '2024-07-16',
   titulo: true
