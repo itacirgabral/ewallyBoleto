@@ -20,6 +20,6 @@ module.exports = {
 
 /*
   // macete geral
-  '1389'.split('') -> ['1', '3', '8', '9']
+  '139'.split('') -> ['1', '3', '9']
   reduce((a, b) => a + Number(b), 80) -> 1 + 3 + 9 + 80
 */
