@@ -5,8 +5,8 @@ const titulosOK = [{
   expirationDate: '2024-07-16',
   titulo: true
 }, {
-  barCode: '4889349773728',
-  dac10: 10,
+  barCode: '39412278829',
+  dac10: 9,
   amount: '20.00',
   expirationDate: '2024-07-16',
   titulo: true

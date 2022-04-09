@@ -11,8 +11,8 @@ const pagamentosOK = [{
   expirationDate: '2024-07-16',
   pagamento: true
 }, {
-  barCode: '925763963775',
-  dac10: 7,
+  barCode: '40810812143',
+  dac10: 10,
   amount: '40.00',
   expirationDate: '2024-07-16',
   pagamento: true
