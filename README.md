@@ -39,3 +39,6 @@ Pagamentos Not OK
 - http://localhost:8080/boleto/012XXXX7896
 - http://localhost:8080/boleto/01230000000
 - http://localhost:8080/boleto/06959236233
+
+# Mais boletos
+Insina novos boletos em `./src/fakedb/seusBoletos.js` sem interferir nos testes
