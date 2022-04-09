@@ -27,16 +27,16 @@ const switxor = (a, b) => (!a && b) || (a && !b)
 
 const bolivator = errorMap => (boleto, cb) => {
   // Objeto contendo a validação de todos os atributos
-  const validations = {
-    titXpagBom: switxor(!!boleto.titulo, !!boleto.pagamento),
-    dac10Bom: dac10Val(boleto.dac10),
-    amountBom: amountVal(boleto.amount),
-    expiraBom: expiraVal(boleto.expirationDate),
-    barCodeBom: barCodeVal(boleto.barCode)
-  }
-  validations.dac10MatchBarCode = validations.barCodeBom &&
-    validations.dac10Bom &&
-    dac10(boleto.barCode) === boleto.dac10
+  const validations = { }
+
+  validations.titXpagBom = switxor(!!boleto.titulo, !!boleto.pagamento)
+  validations.dac10Bom = dac10Val(boleto.dac10)
+  validations.amountBom = amountVal(boleto.amount)
+  validations.expiraBom = expiraVal(boleto.expirationDate)
+  validations.barCodeBom = barCodeVal(boleto.barCode)
+
+  const barDacOK = validations.barCodeBom && validations.dac10Bom
+  validations.dacMatch = barDacOK && dac10(boleto.barCode) === boleto.dac10
 
   // se todas as validações forem true
   if (Object.values(validations).every(e => e)) {
@@ -47,9 +47,11 @@ const bolivator = errorMap => (boleto, cb) => {
 
     return cb(null, message)
   } else {
-    return cb(new Error(Object.entries(validations)
+    const errosTranslated = Object
+      .entries(validations)
       .flatMap(([erroName, isOk]) => isOk ? [] : errorMap[erroName])
-      .join('\n')))
+
+    return cb(new Error(errosTranslated.join('\n')))
   }
 }
 

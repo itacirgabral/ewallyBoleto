@@ -5,6 +5,6 @@ module.exports = {
     amountBom: 'O total deve ser um valor real',
     expiraBom: 'O vencimento deve ser uma data futura',
     barCodeBom: 'O código de barras deve ser de 11 dígitos',
-    Dac10MatchBarCode: 'O dígito verificador deve coincidir com o do código de barras'
+    dacMatch: 'O dígito verificador deve coincidir com o do código de barras'
   }
 }
