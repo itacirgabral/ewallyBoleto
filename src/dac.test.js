@@ -11,19 +11,19 @@ test('# fator21', t => {
 })
 
 test('# somatisse', t => {
-  t.equal(somatisse('00000000000'), 0)
-  t.equal(somatisse('01000000000'), 1)
-  t.equal(somatisse('00200000000'), 4)
-  t.equal(somatisse('00030000000'), 3)
-  t.equal(somatisse('01230000000'), 8)
+  t.equal(somatisse('00000000000'), 0, 'somatisse 00000000000')
+  t.equal(somatisse('01000000000'), 1, 'somatisse 01000000000')
+  t.equal(somatisse('00200000000'), 4, 'somatisse 00200000000')
+  t.equal(somatisse('00030000000'), 3, 'somatisse 00030000000')
+  t.equal(somatisse('01230000000'), 8, 'somatisse 01230000000')
 
-  t.equal(somatisse('00000000006'), 3)
-  t.equal(somatisse('00000000090'), 9)
-  t.equal(somatisse('00000000800'), 7)
-  t.equal(somatisse('00000007000'), 7)
-  t.equal(somatisse('00000007896'), 26)
+  t.equal(somatisse('00000000006'), 3, 'somatisse 00000000006')
+  t.equal(somatisse('00000000090'), 9, 'somatisse 00000000090')
+  t.equal(somatisse('00000000800'), 7, 'somatisse 00000000800')
+  t.equal(somatisse('00000007000'), 7, 'somatisse 00000007000')
+  t.equal(somatisse('00000007896'), 26, 'somatisse 00000007896')
 
-  t.equal(somatisse('01230067896'), 37)
+  t.equal(somatisse('01230067896'), 37, 'somatisse 01230067896')
   t.end()
 })
 

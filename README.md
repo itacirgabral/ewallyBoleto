@@ -12,5 +12,5 @@ yarn
 
 ##  test
 ```
-npx tape src/dac.test.js | npx tap-spec
+yarn test
 ```
