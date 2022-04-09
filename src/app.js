@@ -1,10 +1,21 @@
+const util = require('util')
 const express = require('express')
-const { db } = require('./fakedb')
+const db = require('./fakedb')
+const { bolivator } = require('./bolivator')
+
+const bolivatorP = util.promisify(bolivator)
 
 const app = express()
 
 app.get('/boleto/:barcode', (req, res) => {
-  res.json(db.find(el => el.barCode === req.params.barcode))
+  const boleto = db.find(el => el.barCode === req.params.barcode)
+  if (!boleto) {
+    res.status(404).end()
+  } else {
+    bolivatorP(boleto)
+      .then(message => res.status(200).end(message))
+      .catch(err => res.status(403).end(err.message))
+  }
 })
 
 app.listen(8080, () => {

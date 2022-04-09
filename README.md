@@ -10,7 +10,32 @@ cd ewallyBoleto
 yarn
 ```
 
-##  test
+## test
 ```
 yarn test
 ```
+
+## play
+```
+yarn start
+```
+
+Títulos OK
+- http://localhost:8080/boleto/42282556374
+- http://localhost:8080/boleto/39412278829
+- http://localhost:8080/boleto/47157330195
+
+Pagamentos OK
+- http://localhost:8080/boleto/23812064595
+- http://localhost:8080/boleto/08961455222
+- http://localhost:8080/boleto/40810812143
+
+Títulos Not OK
+- http://localhost:8080/boleto/39779320133
+- http://localhost:8080/boleto/72489004353
+- http://localhost:8080/boleto/61702585084
+
+Pagamentos Not OK
+- http://localhost:8080/boleto/012XXXX7896
+- http://localhost:8080/boleto/01230000000
+- http://localhost:8080/boleto/06959236233

@@ -1,4 +1,4 @@
-const titulosOK = [{
+module.exports = [{
   barCode: '42282556374',
   dac10: 1,
   amount: '20.00',
@@ -17,5 +17,3 @@ const titulosOK = [{
   expirationDate: '2024-07-16',
   titulo: true
 }]
-
-module.exports = titulosOK
