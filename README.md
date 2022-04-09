@@ -42,3 +42,7 @@ Pagamentos Not OK
 
 # Mais boletos
 Insina novos boletos em `./src/fakedb/seusBoletos.js` sem interferir nos testes
+
+## utils
+- Para usar live reload `yarn dev`
+- Para gerar novo código de barras e seu respectivo dac10 `yarn gendac`
