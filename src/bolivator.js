@@ -22,20 +22,24 @@ const barCodeVal = barCode => {
     barCodeI > 0
 }
 
+// logic helper
 const switxor = (a, b) => (!a && b) || (a && !b)
 
-const bolivator = (boleto, cb) => {
-  const titXpagBom = switxor(!!boleto.titulo, !!boleto.pagamento)
-  const dac10Bom = dac10Val(boleto.dac10)
-  const amountBom = amountVal(boleto.amount)
-  const expiraBom = expiraVal(boleto.expirationDate)
-  const barCodeBom = barCodeVal(boleto.barCode)
-
-  const Dac10MatchBarCode = barCodeBom &&
-    dac10Bom &&
+const bolivator = errorMap => (boleto, cb) => {
+  // Objeto contendo a validação de todos os atributos
+  const validations = {
+    titXpagBom: switxor(!!boleto.titulo, !!boleto.pagamento),
+    dac10Bom: dac10Val(boleto.dac10),
+    amountBom: amountVal(boleto.amount),
+    expiraBom: expiraVal(boleto.expirationDate),
+    barCodeBom: barCodeVal(boleto.barCode)
+  }
+  validations.dac10MatchBarCode = validations.barCodeBom &&
+    validations.dac10Bom &&
     dac10(boleto.barCode) === boleto.dac10
 
-  if (titXpagBom && dac10Bom && amountBom && expiraBom && barCodeBom && Dac10MatchBarCode) {
+  // se todas as validações forem true
+  if (Object.values(validations).every(e => e)) {
     const oque = boleto.titulo ? 'Título' : 'Pagamento'
     const de = boleto.amount
     const para = boleto.expirationDate
@@ -43,14 +47,9 @@ const bolivator = (boleto, cb) => {
 
     return cb(null, message)
   } else {
-    return cb(new Error(JSON.stringify({
-      titXpagBom,
-      dac10Bom,
-      amountBom,
-      expiraBom,
-      barCodeBom,
-      Dac10MatchBarCode
-    })))
+    return cb(new Error(Object.entries(validations)
+      .flatMap(([erroName, isOk]) => isOk ? [] : errorMap[erroName])
+      .join('\n')))
   }
 }
 

@@ -4,4 +4,4 @@
 - [x] especificação boleto pagamento de concessionárias
 - [x] validar presença, tipo e valor do atribulo
 - [x] express handler
-- [ ] error message i18n
+- [x] error message i18n

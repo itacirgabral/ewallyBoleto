@@ -2,8 +2,9 @@ const util = require('util')
 const express = require('express')
 const db = require('./fakedb')
 const { bolivator } = require('./bolivator')
+const { ptBr } = require('./errorMap')
 
-const bolivatorP = util.promisify(bolivator)
+const bolivatorP = util.promisify(bolivator(ptBr))
 
 const app = express()
 
