@@ -13,6 +13,7 @@ app.get('/boleto/:barcode', (req, res) => {
   if (!boleto) {
     res.status(404).end()
   } else {
+    console.dir(boleto)
     bolivatorP(boleto)
       .then(message => res.status(200).end(message))
       .catch(err => res.status(403).end(err.message))
