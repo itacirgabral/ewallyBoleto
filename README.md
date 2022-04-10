@@ -41,7 +41,7 @@ Pagamentos Not OK
 - http://localhost:8080/boleto/06959236233
 
 # Mais boletos
-Insina novos boletos em `./src/fakedb/seusBoletos.js` sem interferir nos testes
+Insira novos boletos em `./src/fakedb/seusBoletos.js` (não interfere nos testes)
 
 ## utils
 - Para usar live reload `yarn dev`
