@@ -1,0 +1,49 @@
+{
+	"info": {
+		"_postman_id": "cfcb8ef4-9808-457c-af7a-36015ed09f1f",
+		"name": "boletoget",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "validaBoleto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/boleto/{{barcode}}?dac10=10&amount=40.00&expirationDate=2024-07-16&pagamento=sim&titulo=tambem",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boleto",
+						"{{barcode}}"
+					],
+					"query": [
+						{
+							"key": "dac10",
+							"value": "10"
+						},
+						{
+							"key": "amount",
+							"value": "40.00"
+						},
+						{
+							"key": "expirationDate",
+							"value": "2024-07-16"
+						},
+						{
+							"key": "pagamento",
+							"value": "sim"
+						},
+						{
+							"key": "titulo",
+							"value": "tambem"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -3,19 +3,19 @@ Queremos poder através da aplicação consultar linhas digitáveis de boleto de
 e pagamento de concessionárias, verificando se a mesma é válida ou não. Sendo válida e 
 possuindo valor e/ou data de vencimento ter o retorno desses dados
 
-## setup
+## Setup
 ```
 git clone https://github.com/itacirgabral/ewallyBoleto
 cd ewallyBoleto
 yarn
 ```
 
-## test
+## Test
 ```
 yarn test
 ```
 
-## play
+## Play
 ```
 yarn start
 ```
@@ -40,9 +40,13 @@ Pagamentos Not OK
 - http://localhost:8080/boleto/01230000000
 - http://localhost:8080/boleto/06959236233
 
-# Mais boletos
+## Mais boletos
 Insira novos boletos em `./src/fakedb/seusBoletos.js` (não interfere nos testes)
 
-## utils
+## Utils
 - Para usar live reload `yarn dev`
 - Para gerar novo código de barras e seu respectivo dac10 `yarn gendac`
+
+## Postman
+A rota com queries do tipo `http://localhost:8080/boleto/23812064595?dac10=10&amount=40.00&expirationDate=2024-07-16&pagamento=sim`
+pode ser utlizada, um exemplo está na coleção do postman [postman](./boletoget.postman_collection.json)
