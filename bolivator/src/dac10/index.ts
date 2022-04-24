@@ -16,8 +16,8 @@ const charRedutor = (n: number): number => {
 const respelho10 = (n: number) => 10 - n % 10
 
 const dac10 = (sequencia: Array<number>) => {
-  const somatisse = sequencia.reduceRight((acc, el, idx, arr) => {
-    const fator = fator21(arr.length - idx + 1) // reduceRight também reverte os índices
+  const somatisse = sequencia.reverse().reduce((acc, el, idx) => {
+    const fator = fator21(idx)
 
     return acc + charRedutor(fator * el)
   }, 0)

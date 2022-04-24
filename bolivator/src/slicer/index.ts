@@ -1,7 +1,7 @@
 // AAABC.CCCCX DDDDD.DDDDDY EEEEE.EEEEEZ K UUUUVVVVVVVVVV
 // 01234.56789 01234.567890 12345.678901 2 34567890123456
 
-const fields2slots = <Type>(rawFields: Array<Type>) => {
+const slicer = <Type>(rawFields: Array<Type>) => {
   const slotsA = rawFields.slice(0, 3) // Codigo do banco
   const slotB = rawFields[3] // Codigo moeda
   const slotsC = rawFields.slice(4, 9) // Posições 20 a 24 do código de barras
@@ -51,4 +51,4 @@ const fields2slots = <Type>(rawFields: Array<Type>) => {
   }
 }
 
-export default fields2slots
+export default slicer

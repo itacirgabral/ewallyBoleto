@@ -1,6 +1,7 @@
 import { listy } from './linhaDigitavel'
-import fields2slots from './fields2slots'
+import slicer from './slicer'
 import dac10 from './dac10'
+import dac11 from './dac11'
 import { fatorVencimento2days, makeExpirationDate } from './tetrapak'
 import totalismo from './totalismo'
 
@@ -26,17 +27,20 @@ export default class Bolivator {
   private slotsU: Array<number> //  Fator de Vencimento
   private slotsV: Array<number> //  Valor do boleto de pagamento
 
+  readonly barCode: Array<number> // Codigo de barras
+
   // Estariam os digitos verificadores do campesinato corretos?
   readonly dvxOK: boolean
   readonly dvyOK: boolean
   readonly dvzOK: boolean
+  readonly barCodeOK: boolean
 
   readonly goodFor: Date
   readonly amount: number
 
   constructor (private linhaDigitavel: string) {
     const rawFields = listy(linhaDigitavel)
-    const allSlots = fields2slots(rawFields)
+    const allSlots = slicer(rawFields)
     this.slotsA = allSlots.slotsA
     this.slotB = allSlots.slotB
     this.slotsC = allSlots.slotsC
@@ -49,9 +53,12 @@ export default class Bolivator {
     this.slotsU = allSlots.slotsU
     this.slotsV = allSlots.slotsV
 
+    this.barCode = allSlots.barCode
+
     this.dvxOK = dac10([...this.slotsA, this.slotB, ...this.slotsC]) === this.slotX
     this.dvyOK = dac10(this.slotsD) === this.slotY
     this.dvzOK = dac10(this.slotsE) === this.slotZ
+    this.barCodeOK = dac11(this.barCode) === this.barCode[4]
 
     this.goodFor = makeExpirationDate(fatorVencimento2days(this.slotsU))
     this.amount = totalismo(this.slotsV)
