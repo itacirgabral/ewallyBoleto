@@ -10,6 +10,6 @@ describe('# Fator vencimento', () => {
   })
   test('## Fator vencimento 1001 deve acontecer em 04 de julho de 2000', () => {
     const goodFor = new Date('2000/jul/04')
-    expect(makeExpirationDate(1001).toLocaleDateString()).toBe(goodFor.toLocaleDateString())
+    expect(makeExpirationDate(1001).toDateString()).toBe(goodFor.toDateString())
   })
 })

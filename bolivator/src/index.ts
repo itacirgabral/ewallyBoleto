@@ -2,6 +2,7 @@ import { listy } from './linhaDigitavel'
 import fields2slots from './fields2slots'
 import dac10 from './dac10'
 import { fatorVencimento2days, makeExpirationDate } from './tetrapak'
+import totalismo from './totalismo'
 
 export default class Bolivator {
   // Campo 1
@@ -31,6 +32,7 @@ export default class Bolivator {
   readonly dvzOK: boolean
 
   readonly goodFor: Date
+  readonly amount: number
 
   constructor (private linhaDigitavel: string) {
     const rawFields = listy(linhaDigitavel)
@@ -52,5 +54,6 @@ export default class Bolivator {
     this.dvzOK = dac10(this.slotsE) === this.slotZ
 
     this.goodFor = makeExpirationDate(fatorVencimento2days(this.slotsU))
+    this.amount = totalismo(this.slotsV)
   }
 }
