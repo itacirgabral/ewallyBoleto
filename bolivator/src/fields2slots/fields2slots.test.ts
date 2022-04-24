@@ -49,4 +49,16 @@ describe('# CONVERSAO DE CAMPOS PARA ATRIBUTOS PRIVADOS', () => {
     const { slotsV } = fields2slots(rawFields)
     expect(slotsV).toEqual(['V', 'V', 'V', 'V', 'V', 'V', 'V', 'V', 'V', 'V'])
   })
+  test('## Codigo de barras guiado', () => {
+    const correctBarCode = [...'AAABKUUUUVVVVVVVVVVCCCCCDDDDDDDDDDEEEEEEEEEE']
+    const { barCode } = fields2slots(rawFields)
+    expect(barCode).toEqual(correctBarCode)
+  })
+  test('## Codigo de barras do enunciado', () => {
+    // repare ç
+    const linhaDigitavel = [...'21290001192110001210904475617405ç75870000002000']
+    const correctBarCode = [...'2129ç758700000020000001121100012100447561740']
+    const { barCode } = fields2slots(linhaDigitavel)
+    expect(barCode).toEqual(correctBarCode)
+  })
 })
