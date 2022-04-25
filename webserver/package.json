@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/itacirgabral/ewallyBoleto#readme",
   "dependencies": {
+    "bolivator": "../bolivator/",
     "express": "^4.17.3"
   },
   "devDependencies": {
