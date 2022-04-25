@@ -9,16 +9,16 @@ app.get('/boleto/:linhaDigitavel', (req, res) => {
     const boleto = new Bolivator(linhaDigitavel)
 
     const errorsMessages = []
-    if (boleto.dvxOK) {
+    if (!boleto.dvxOK) {
       errorsMessages.push('O primeiro campo possui algum erro')
     }
-    if (boleto.dvyOK) {
+    if (!boleto.dvyOK) {
       errorsMessages.push('O segundo campo possui algum erro')
     }
-    if (boleto.dvzOK) {
+    if (!boleto.dvzOK) {
       errorsMessages.push('O terceiro campo possui algum erro')
     }
-    if (boleto.barCodeOK) {
+    if (!boleto.barCodeOK) {
       errorsMessages.push('O código de barras possui algum erro')
     }
 
@@ -40,7 +40,7 @@ app.get('/boleto/:linhaDigitavel', (req, res) => {
         vencimento
       })
     } else {
-      res.status(300).end(errorsMessages.join('\n'))
+      res.status(400).end(errorsMessages.join('\n'))
     }
   } catch (err) {
     /* Quando a linha digitavel não possui apenas numeros ou quando o tamanho
@@ -53,6 +53,15 @@ app.get('/boleto/:linhaDigitavel', (req, res) => {
     console.error(err)
     res.status(400).end('bad parameter')
   }
+})
+
+app.get('/status', (_req, res) => {
+  res.status(200).end()
+})
+
+app.get('/close', (_req, res) => {
+  res.status(200).end()
+  process.exit()
 })
 
 app.listen(8080, () => {

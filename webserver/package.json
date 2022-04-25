@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx node-dev src/app.js",
     "start": "node src/app.js",
-    "test": "npx tape src/*.test.js | npx tap-spec"
+    "test": "yarn start & npx tape ./e2e.test.js | npx tap-spec"
   },
   "repository": {
     "type": "git",

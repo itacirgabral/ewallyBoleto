@@ -11,35 +11,31 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/boleto/{{barcode}}?dac10=10&amount=40.00&expirationDate=2024-07-16&pagamento=sim&titulo=tambem",
+					"raw": "{{url}}/boleto/21290001192110001210904475617405975870000002000",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"boleto",
-						"{{barcode}}"
+						"21290001192110001210904475617405975870000002000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validaBoletoTodosErros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/boleto/21290001182110001210804475617408875870000002000",
+					"host": [
+						"{{url}}"
 					],
-					"query": [
-						{
-							"key": "dac10",
-							"value": "10"
-						},
-						{
-							"key": "amount",
-							"value": "40.00"
-						},
-						{
-							"key": "expirationDate",
-							"value": "2024-07-16"
-						},
-						{
-							"key": "pagamento",
-							"value": "sim"
-						},
-						{
-							"key": "titulo",
-							"value": "tambem"
-						}
+					"path": [
+						"boleto",
+						"21290001182110001210804475617408875870000002000"
 					]
 				}
 			},

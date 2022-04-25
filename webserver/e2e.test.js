@@ -1,138 +1,123 @@
+const { setTimeout } = require('timers/promises')
 const test = require('tape')
 const axios = require('axios')
 
-const titulosOK = require('./src/fakedb/titulosOK')
-const pagamentosOK = require('./src/fakedb/pagamentosOK')
-const titulosNOK = require('./src/fakedb/titulosNOK')
-const pagamentosNOK = require('./src/fakedb/pagamentosNOK')
+/**
+AAABCCCCCXDDDDDDDDDDYEEEEEEEEEEZKUUUUVVVVVVVVVV
+21290001192110001210904475617405975870000002000
+*/
 
-test('# pagamento OK', t => {
+test('# Espere a API levantar', async t => {
+  let dePe = false
+  while (!dePe) {
+    await setTimeout(1000)
+    await axios({
+      method: 'get',
+      url: 'http://localhost:8080/status'
+    })
+      .then(() => {
+        dePe = true
+      })
+      .catch(() => {})
+  }
+
+  t.pass('Upa')
+})
+
+test('# Boleto OK', t => {
   t.plan(1)
-
-  const barCode = '40810812143'
-  const dac10 = 10
-  const amount = '40.00'
-  const expirationDate = '2024-07-16'
-  const pagamento = true
-
   axios({
     method: 'get',
-    url: `http://localhost:8080/boleto/${
-      barCode
-    }?dac10=${
-      dac10
-    }&amount=${
-      amount
-    }&expirationDate=${
-      expirationDate
-    }&pagamento=${
-      pagamento
-    }`
+    url: 'http://localhost:8080/boleto/21290001192110001210904475617405975870000002000'
   })
-    .then(() => t.pass())
+    .then(response => {
+      const { codigoBarras, valor, vencimento } = response.data
+      if (codigoBarras === '21299758700000020000001121100012100447561740' &&
+      valor === '20,00' &&
+      vencimento === '16 de julho de 2018') {
+        t.pass(JSON.stringify(response.data))
+      } else {
+        t.fail(JSON.stringify(response.data))
+      }
+    })
     .catch(() => t.fail())
 })
 
-test('# titulo fail', t => {
-  t.plan(1)
-
-  const barCode = '39779320133'
-  const dac10 = 6
-  const expirationDate = '2024-07-16'
-  const titulo = true
+test('# Boleto BAD em paralelo', t => {
+  t.plan(5)
 
   axios({
     method: 'get',
-    url: `http://localhost:8080/boleto/${
-      barCode
-    }?dac10=${
-      dac10
-    }&expirationDate=${
-      expirationDate
-    }&titulo=${
-      titulo
-    }`
+    url: 'http://localhost:8080/boleto/21290001182110001210904475617405975870000002000'
   })
     .then(() => t.fail())
-    .catch(() => t.pass())
+    .catch(err => {
+      if (err.response.data === 'O primeiro campo possui algum erro') {
+        t.pass(err.response.data)
+      } else {
+        t.fail(err.response.data)
+      }
+    })
+
+  axios({
+    method: 'get',
+    url: 'http://localhost:8080/boleto/21290001192110001210804475617405975870000002000'
+  })
+    .then(() => t.fail())
+    .catch(err => {
+      if (err.response.data === 'O segundo campo possui algum erro') {
+        t.pass(err.response.data)
+      } else {
+        t.fail(err.response.data)
+      }
+    })
+
+  axios({
+    method: 'get',
+    url: 'http://localhost:8080/boleto/21290001192110001210904475617408975870000002000'
+  })
+    .then(() => t.fail())
+    .catch(err => {
+      if (err.response.data === 'O terceiro campo possui algum erro') {
+        t.pass(err.response.data)
+      } else {
+        t.fail(err.response.data)
+      }
+    })
+
+  axios({
+    method: 'get',
+    url: 'http://localhost:8080/boleto/21290001192110001210904475617405875870000002000'
+  })
+    .then(() => t.fail())
+    .catch(err => {
+      if (err.response.data === 'O código de barras possui algum erro') {
+        t.pass(err.response.data)
+      } else {
+        t.fail(err.response.data)
+      }
+    })
+
+  axios({
+    method: 'get',
+    url: 'http://localhost:8080/boleto/21290001182110001210804475617408875870000002000'
+  })
+    .then(() => t.fail())
+    .catch(err => {
+      if (err.response.data === 'O primeiro campo possui algum erro\nO segundo campo possui algum erro\nO terceiro campo possui algum erro\nO código de barras possui algum erro') {
+        t.pass(err.response.data)
+      } else {
+        t.fail(err.response.data)
+      }
+    })
 })
 
-test('# Tudo em paralelo', t => {
-  t.plan(titulosOK.length + pagamentosOK.length + titulosNOK.length + pagamentosNOK.length)
-
-  titulosOK.forEach(({ barCode, dac10, amount, expirationDate, titulo }) => {
-    axios({
-      method: 'get',
-      url: `http://localhost:8080/boleto/${
-        barCode
-      }?dac10=${
-        dac10
-      }&amount=${
-        amount
-      }&expirationDate=${
-        expirationDate
-      }&titulo=${
-        titulo
-      }`
-    })
-      .then(() => t.pass())
-      .catch(() => t.fail())
+test('# Desliga API', t => {
+  t.plan(1)
+  axios({
+    method: 'get',
+    url: 'http://localhost:8080/close'
   })
-
-  pagamentosOK.forEach(({ barCode, dac10, amount, expirationDate, pagamento }) => {
-    axios({
-      method: 'get',
-      url: `http://localhost:8080/boleto/${
-        barCode
-      }?dac10=${
-        dac10
-      }&amount=${
-        amount
-      }&expirationDate=${
-        expirationDate
-      }&pagamento=${
-        pagamento
-      }`
-    })
-      .then(() => t.pass())
-      .catch(() => t.fail())
-  })
-
-  titulosNOK.forEach(({ barCode, dac10, amount, expirationDate, titulo }) => {
-    axios({
-      method: 'get',
-      url: `http://localhost:8080/boleto/${
-        barCode
-      }?dac10=${
-        dac10
-      }&amount=${
-        amount
-      }&expirationDate=${
-        expirationDate
-      }&titulo=${
-        titulo
-      }`
-    })
-      .then(() => t.pass())
-      .catch(() => t.fail())
-  })
-
-  pagamentosNOK.forEach(({ barCode, dac10, amount, expirationDate, pagamento }) => {
-    axios({
-      method: 'get',
-      url: `http://localhost:8080/boleto/${
-        barCode
-      }?dac10=${
-        dac10
-      }&amount=${
-        amount
-      }&expirationDate=${
-        expirationDate
-      }&pagamento=${
-        pagamento
-      }`
-    })
-      .then(() => t.pass())
-      .catch(() => t.fail())
-  })
+    .then(() => t.pass())
+    .catch(() => t.fail())
 })
