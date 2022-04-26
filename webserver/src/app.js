@@ -71,7 +71,7 @@ app.get('/boleto/:linhaDigitavel', (req, res) => {
       }
 
       if (errorsMessages.length === 0) {
-        const codigoBarras = titulo.join('')
+        const codigoBarras = titulo.barCode.join('')
         const valor = titulo.amount.toLocaleString('pt-BR', {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2
