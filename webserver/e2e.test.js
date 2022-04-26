@@ -112,6 +112,24 @@ test('# Boleto BAD em paralelo', t => {
     })
 })
 
+test('# Título OK', t => {
+  t.plan(1)
+  axios({
+    method: 'get',
+    url: 'http://localhost:8080/boleto/858000000003312301172024204290336657605912000693'
+  })
+    .then(response => {
+      const { codigoBarras, valor } = response.data
+      const barcode = '85800000000312301172022042903366560591200069'
+      if (codigoBarras === barcode && valor === '31,23') {
+        t.pass(JSON.stringify(response.data))
+      } else {
+        t.fail(JSON.stringify(response.data))
+      }
+    })
+    .catch(() => t.fail())
+})
+
 test('# Desliga API', t => {
   t.plan(1)
   axios({
