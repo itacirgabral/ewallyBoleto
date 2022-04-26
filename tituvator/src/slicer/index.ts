@@ -11,14 +11,14 @@ const slicer = <Type>(rawFields: Array<Type>) => {
   const slotsD = rawFields.slice(36, 47)
   const dvD = rawFields[47]
 
-  const slotsP = rawFields.slice(4, 15)
-
   const barCode = [
     ...slotsA,
     ...slotsB,
     ...slotsC,
     ...slotsD
   ]
+
+  const slotsP = barCode.slice(4, 15)
 
   const codigoMoeda = Number(rawFields[2])
   const isDac10 = codigoMoeda === 6 || codigoMoeda === 7
