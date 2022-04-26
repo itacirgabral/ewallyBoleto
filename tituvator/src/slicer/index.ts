@@ -20,7 +20,7 @@ const slicer = <Type>(rawFields: Array<Type>) => {
     ...slotsD
   ]
 
-  const codigoMoeda = Number(rawFields[3])
+  const codigoMoeda = Number(rawFields[2])
   const isDac10 = codigoMoeda === 6 || codigoMoeda === 7
 
   return {
