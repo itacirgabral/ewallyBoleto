@@ -1979,6 +1979,9 @@ through@2, through@^2.3.8, through@~2.3.4:
   resolved "http://localhost:4873/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
   integrity sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
 
+tituvator@../tituvator:
+  version "1.0.0"
+
 toidentifier@1.0.1:
   version "1.0.1"
   resolved "http://localhost:4873/toidentifier/-/toidentifier-1.0.1.tgz#3be34321a88a820ed1bd80dfaa33e479fbb8dd35"

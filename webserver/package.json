@@ -21,7 +21,8 @@
   "homepage": "https://github.com/itacirgabral/ewallyBoleto#readme",
   "dependencies": {
     "bolivator": "../bolivator/",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "tituvator": "../tituvator"
   },
   "devDependencies": {
     "axios": "^0.26.1",
