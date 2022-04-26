@@ -24,6 +24,24 @@
 			"response": []
 		},
 		{
+			"name": "validaTitulo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/boleto/858000000003312301172024204290336657605912000693",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boleto",
+						"858000000003312301172024204290336657605912000693"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "validaBoletoTodosErros",
 			"request": {
 				"method": "GET",
