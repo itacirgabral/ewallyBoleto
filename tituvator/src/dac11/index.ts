@@ -15,6 +15,10 @@ const dac11 = (sequencia: Array<number>) => {
 
   const respelho = respelho11(somatisse)
 
+  /* febraban comeu bola
+  ** Quando o resto da divisão for igual a 0 ou 1, atribuí-se ao DV o digito
+  ** “0”, e quando for 10, atribuíse ao DV o digito “1”
+  */
   switch (respelho) {
     case 10:
     case 11:
