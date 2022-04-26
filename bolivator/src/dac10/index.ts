@@ -22,7 +22,7 @@ const dac10 = (sequencia: Array<number>) => {
     return acc + charRedutor(fator * el)
   }, 0)
 
-  return respelho10(somatisse)
+  return respelho10(somatisse) % 10
 }
 
 export {
