@@ -26,7 +26,7 @@ app.get('/boleto/:linhaDigitavel', (req, res) => {
       }
 
       if (errorsMessages.length === 0) {
-        const codigoBarras = boleto.barCode.map(String).join('')
+        const codigoBarras = boleto.barCode.join('')
         const vencimento = boleto.goodFor.toLocaleDateString('pt-BR', {
           year: 'numeric',
           month: 'long',
@@ -71,7 +71,7 @@ app.get('/boleto/:linhaDigitavel', (req, res) => {
       }
 
       if (errorsMessages.length === 0) {
-        const codigoBarras = titulo.barCode.map(String).join('')
+        const codigoBarras = titulo.join('')
         const valor = titulo.amount.toLocaleString('pt-BR', {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2
