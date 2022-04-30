@@ -1,7 +1,8 @@
 import { listy } from 'linhaDigitavel'
 import slicer from './slicer'
-import dac10 from './dac10'
-import dac11 from './dac11'
+import normalizeDac11 from './normalizeDac11'
+import dac10 from 'dac10'
+import dac11 from 'dac11'
 import { fatorVencimento2days, makeExpirationDate } from 'tetrapak'
 import totalismo from 'totalismo'
 
@@ -60,7 +61,11 @@ export default class Bolivator {
     this.dvxOK = dac10([...this.slotsA, this.slotB, ...this.slotsC]) === this.slotX
     this.dvyOK = dac10(this.slotsD) === this.slotY
     this.dvzOK = dac10(this.slotsE) === this.slotZ
-    this.barCodeOK = dac11(this.barCode) === this.barCode[4]
+
+    this.barCodeOK = normalizeDac11(dac11([
+      ...this.barCode.slice(0, 4),
+      ...this.barCode.slice(5)
+    ])) === this.barCode[4]
 
     this.goodFor = makeExpirationDate(fatorVencimento2days(this.slotsU))
     this.amount = totalismo(this.slotsV)

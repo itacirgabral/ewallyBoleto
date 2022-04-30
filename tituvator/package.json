@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "dac10": "../dac10/",
+    "dac11": "../dac11/",
     "linhaDigitavel": "../linhaDigitavel/",
     "totalismo": "../totalismo/"
   }

@@ -1,7 +1,8 @@
 import { listy } from 'linhaDigitavel'
 import slicer from './slicer'
+import normalizeDac11 from './normalizeDac11'
 import dac10 from 'dac10'
-import dac11 from './dac11'
+import dac11 from 'dac11'
 import totalismo from 'totalismo'
 
 const tituloLength = 48
@@ -53,16 +54,16 @@ export default class Tituvator {
       this.dvcOK = dac10(this.slotsC) === this.dvC
       this.dvdOK = dac10(this.slotsD) === this.dvD
     } else {
-      this.dvaOK = dac11(this.slotsA) === this.dvA
-      this.dvbOK = dac11(this.slotsB) === this.dvB
-      this.dvcOK = dac11(this.slotsC) === this.dvC
-      this.dvdOK = dac11(this.slotsD) === this.dvD
+      this.dvaOK = normalizeDac11(dac11(this.slotsA)) === this.dvA
+      this.dvbOK = normalizeDac11(dac11(this.slotsB)) === this.dvB
+      this.dvcOK = normalizeDac11(dac11(this.slotsC)) === this.dvC
+      this.dvdOK = normalizeDac11(dac11(this.slotsD)) === this.dvD
     }
 
-    this.barCodeOK = dac11([
+    this.barCodeOK = normalizeDac11(dac11([
       ...this.barCode.slice(0, 3),
       ...this.barCode.slice(4)
-    ]) === this.barCode[3]
+    ])) === this.barCode[3]
 
     this.amount = totalismo(this.slotsP)
   }
