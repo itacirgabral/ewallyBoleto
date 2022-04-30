@@ -1,6 +1,6 @@
 import { listy } from 'linhaDigitavel'
 import slicer from './slicer'
-import dac10 from './dac10'
+import dac10 from 'dac10'
 import dac11 from './dac11'
 import totalismo from 'totalismo'
 

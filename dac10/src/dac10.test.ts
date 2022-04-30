@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals'
-import dac10, { fator21, charRedutor, respelho10 } from '../dac10'
+import dac10, { fator21, charRedutor, respelho10 } from '../../dac10/src'
 
 describe('# Digito Verificador Modulo 10', () => {
   test('## Fator 2 ou 1', () => {
