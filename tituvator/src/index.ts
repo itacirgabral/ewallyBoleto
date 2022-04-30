@@ -1,8 +1,10 @@
-import { listy } from './linhaDigitavel'
+import { listy } from 'linhaDigitavel'
 import slicer from './slicer'
 import dac10 from './dac10'
 import dac11 from './dac11'
 import totalismo from 'totalismo'
+
+const tituloLength = 48
 
 export default class Tituvator {
   private slotsA: Array<number>
@@ -28,7 +30,7 @@ export default class Tituvator {
   readonly amount: number
 
   constructor (private linhaDigitavel: string) {
-    const rawFields = listy(linhaDigitavel)
+    const rawFields = listy(tituloLength)(linhaDigitavel)
     const allSlots = slicer(rawFields)
     this.slotsA = allSlots.slotsA
     this.dvA = allSlots.dvA

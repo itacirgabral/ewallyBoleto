@@ -1,9 +1,11 @@
-import { listy } from './linhaDigitavel'
+import { listy } from 'linhaDigitavel'
 import slicer from './slicer'
 import dac10 from './dac10'
 import dac11 from './dac11'
 import { fatorVencimento2days, makeExpirationDate } from './tetrapak'
 import totalismo from 'totalismo'
+
+const boletoLength = 47
 
 export default class Bolivator {
   // Campo 1
@@ -39,7 +41,7 @@ export default class Bolivator {
   readonly amount: number
 
   constructor (private linhaDigitavel: string) {
-    const rawFields = listy(linhaDigitavel)
+    const rawFields = listy(boletoLength)(linhaDigitavel)
     const allSlots = slicer(rawFields)
     this.slotsA = allSlots.slotsA
     this.slotB = allSlots.slotB

@@ -1,14 +1,14 @@
 import { describe, expect, test } from '@jest/globals'
-import { checkLength, checkCharacter, listy } from '../linhaDigitavel'
+import { checkLength, checkCharacter, listy } from '../../linhaDigitavel/src'
 
 const demoLinhaDigitavel = '12345678901234567890123456789012345678901234567'
 
 describe('# LINHA DIGITAVEL', () => {
   test('## Deve ser verdadeiro para algo do tamanho 47', () => {
-    expect(checkLength(demoLinhaDigitavel)).toBeTruthy()
+    expect((checkLength(47))(demoLinhaDigitavel)).toBeTruthy()
   })
   test('## Deve ser falso para algo do tamanho diferente de 47', () => {
-    expect(checkLength('12345')).toBeFalsy()
+    expect(checkLength(47)('12345')).toBeFalsy()
   })
   test('## Deve ser verdadeiro para \'8\'', () => {
     expect(checkCharacter('8')).toBeTruthy()
@@ -17,11 +17,11 @@ describe('# LINHA DIGITAVEL', () => {
     expect(checkCharacter(',')).toBeFalsy()
   })
   test('## Deve converter demoLinhaDigitavel para um array de numeros', () => {
-    const value = listy(demoLinhaDigitavel) as Array<number>
+    const value = listy(47)(demoLinhaDigitavel) as Array<number>
     expect(Array.isArray(value)).toBeTruthy()
     expect(value[0]).toBe(1)
   })
   test('## Deve tentar converter ,./ e dar erro', async () => {
-    expect(() => listy(',./')).toThrow()
+    expect(() => listy(47)(',./')).toThrow()
   })
 })
