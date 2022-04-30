@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals'
-import { fatorVencimento2days, makeExpirationDate, originDate } from '../tetrapak'
+import { fatorVencimento2days, makeExpirationDate, originDate } from '../../tetrapak/src'
 
 describe('# Fator vencimento', () => {
   test('## Marco zero deve ser 7 de outubro de 1997', () => {

@@ -2,7 +2,7 @@ import { listy } from 'linhaDigitavel'
 import slicer from './slicer'
 import dac10 from './dac10'
 import dac11 from './dac11'
-import { fatorVencimento2days, makeExpirationDate } from './tetrapak'
+import { fatorVencimento2days, makeExpirationDate } from 'tetrapak'
 import totalismo from 'totalismo'
 
 const boletoLength = 47
