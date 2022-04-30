@@ -3323,6 +3323,9 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
+totalismo@../totalismo/:
+  version "1.0.0"
+
 tough-cookie@^4.0.0:
   version "4.0.0"
   resolved "http://localhost:4873/tough-cookie/-/tough-cookie-4.0.0.tgz#d822234eeca882f991f0f908824ad2622ddbece4"

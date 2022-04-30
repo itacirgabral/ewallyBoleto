@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals'
-import totalismo from '../totalismo'
+import totalismo from '../../totalismo/src'
 
 describe('# Totalizador', () => {
   test('## [0, 0, 0, 0, 0, 0, 0, 2, 0, 0] deve dar 2,00 reais', () => {

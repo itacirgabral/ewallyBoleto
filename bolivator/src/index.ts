@@ -3,7 +3,7 @@ import slicer from './slicer'
 import dac10 from './dac10'
 import dac11 from './dac11'
 import { fatorVencimento2days, makeExpirationDate } from './tetrapak'
-import totalismo from './totalismo'
+import totalismo from 'totalismo'
 
 export default class Bolivator {
   // Campo 1

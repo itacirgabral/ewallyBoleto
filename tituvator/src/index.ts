@@ -2,7 +2,7 @@ import { listy } from './linhaDigitavel'
 import slicer from './slicer'
 import dac10 from './dac10'
 import dac11 from './dac11'
-import totalismo from './totalismo'
+import totalismo from 'totalismo'
 
 export default class Tituvator {
   private slotsA: Array<number>
