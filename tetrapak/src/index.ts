@@ -9,7 +9,7 @@ const originDate = new Date('1997/oct/07')
  * @param days - Quantidade de dias inteiros
  * @returns Data gregoriana após os dias
  */
-const makeExpirationDate = (days: number) => {
+const makeExpirationDate = (days = 0) => {
   // does not mutate the original date value!
   const cloneDate = new Date(originDate)
   cloneDate.setDate(cloneDate.getDate() + days)
