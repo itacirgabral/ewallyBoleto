@@ -1,7 +1,30 @@
+/**
+ * Costante definida como base dos cofatores
+ */
 const base = [2, 3, 4, 5, 6, 7, 8, 9]
+
+/**
+ * Gera o cofator associado ao índice
+ *
+ * @param idx indice
+ * @returns cofator
+ */
 const fator2to9 = (idx: number) => base[idx % base.length]
 
+/**
+ * Calcula o que falta até 11 do resto de 11
+ *
+ * @param n Valor inteiro positivo
+ * @returns Valor normalizado
+ */
 const respelho11 = (n: number) => 11 - n % 11
+
+/**
+ * Calcula o dígito verificador utilizando módulo 11
+ *
+ * @param sequencia Vetor de inteiro correspondente a linha digitavel
+ * @returns Inteiro positivo
+ */
 const dac11 = (sequencia: Array<number>) => {
   // contando da direita pra esquerda
   const reversed = sequencia.reverse()
@@ -19,7 +42,7 @@ const dac11 = (sequencia: Array<number>) => {
   // somando todos os elementos
   const total = coplay.reduce((acc, el) => acc + el, 0)
 
-  // o que falta até 11 do resto
+  // invertendo
   const respelho = respelho11(total)
 
   return respelho

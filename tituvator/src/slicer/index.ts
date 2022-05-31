@@ -1,3 +1,10 @@
+/**
+ * Segundo as regras de negócio, secciona a linha digitavel em campos claramente
+ * nomeados
+ *
+ * @param rawFields Vetor original da linha digitavel
+ * @returns segmentos decodificados
+ */
 const slicer = <Type>(rawFields: Array<Type>) => {
   const slotsA = rawFields.slice(0, 11)
   const dvA = rawFields[11]

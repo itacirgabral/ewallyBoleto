@@ -1,7 +1,21 @@
-// AAABC.CCCCX DDDDD.DDDDDY EEEEE.EEEEEZ K UUUUVVVVVVVVVV
-// 01234.56789 01234.567890 12345.678901 2 34567890123456
-
+/**
+ * Segundo as regras de negócio, secciona a linha digitavel em campos claramente
+ * nomeados
+ *
+ * @param rawFields Vetor original da linha digitavel
+ * @returns segmentos decodificados
+ *
+ * @example
+ *  2129 00011 9 2110001210 9 0447561740 5 ç 75870000002000 // enunciado entrada
+ *  0123 45678 9 0123456789 0 1234567890 1 2 34567890123456 // guia de indice
+ *  aaaa iiiii _ oooooooooo _ uuuuuuuuuu _ ç eeeeeeeeeeeeee // entrada blocos
+ *
+ *  2129 ç 75870000002000 00011 2110001210 0447561740 // enunciado saida
+ *  aaaa ç eeeeeeeeeeeeee iiiii oooooooooo uuuuuuuuuu // saida blocos
+ */
 const slicer = <Type>(rawFields: Array<Type>) => {
+  // AAABC.CCCCX DDDDD.DDDDDY EEEEE.EEEEEZ K UUUUVVVVVVVVVV
+  // 01234.56789 01234.567890 12345.678901 2 34567890123456
   const slotsA = rawFields.slice(0, 3) // Codigo do banco
   const slotB = rawFields[3] // Codigo moeda
   const slotsC = rawFields.slice(4, 9) // Posições 20 a 24 do código de barras
@@ -18,14 +32,6 @@ const slicer = <Type>(rawFields: Array<Type>) => {
   const slotsU = rawFields.slice(33, 37) // Data vencimento
   const slotsV = rawFields.slice(37, 47) // Valor
 
-  /*
-    2129 00011 9 2110001210 9 0447561740 5 ç 75870000002000 // exemplo do enunciado
-    0123 45678 9 0123456789 0 1234567890 1 2 34567890123456 // guia de indice
-    aaaa iiiii _ oooooooooo _ uuuuuuuuuu _ ç eeeeeeeeeeeeee // guia entrada
-
-    2129 ç 75870000002000 00011 2110001210 0447561740 // exemplo do enunciado
-    aaaa ç eeeeeeeeeeeeee iiiii oooooooooo uuuuuuuuuu // guia saida
-  */
   const barCode = [
     ...rawFields.slice(0, 4),
     rawFields[32],

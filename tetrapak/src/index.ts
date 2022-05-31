@@ -1,6 +1,14 @@
-// 7 de outubro de 1997
+/**
+ * Constante definida como origem do calendário
+ */
 const originDate = new Date('1997/oct/07')
 
+/**
+ * Calcula a data do vencimento
+ *
+ * @param days - Quantidade de dias inteiros
+ * @returns Data gregoriana após os dias
+ */
 const makeExpirationDate = (days: number) => {
   // does not mutate the original date value!
   const cloneDate = new Date(originDate)
@@ -9,7 +17,12 @@ const makeExpirationDate = (days: number) => {
   return cloneDate
 }
 
-// fatorVencimento = [1, 0, 0, 1]
+/**
+ * Extrai a quantidade de dias da fatoração em dígitos
+ *
+ * @param fatorVencimento - Vetor de inteiros
+ * @returns total de dias
+ */
 const fatorVencimento2days = (fatorVencimento: Array<number>) => Number.parseInt(fatorVencimento
   .map(String)
   .join(''))
