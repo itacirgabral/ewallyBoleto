@@ -1,4 +1,5 @@
 {
+    "name": "ewally",
     "private": true,
     "workspaces": [
         "bolivator",
